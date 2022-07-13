@@ -1,0 +1,20 @@
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('1', 'cactus', 'onami', '14990', '10', 'Bonito pero cuidado que pica', 'productos/cactus.jpg', '2022-07-12', '2022-07-12', '1');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('2', 'arena_decortiva', 'jimbe', '5990', '28', 'Arena decorativa de color rojo', 'productos/arena_decorativa.jpg', '2022-07-12', '2022-07-12', '2');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('3', 'banano', 'yonkou', '19990', '14', 'Bonito arbol de bananas', 'productos/banano.jpg', '2022-07-12', '2022-07-12', '1');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('4', 'bonsai', 'falabella', '25990', '12', 'Arbol chaparrito', 'productos/bonsai.jpg', '2022-07-12', '2022-07-12', '1');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('5', 'ficus', 'sangoro', '14990', '14', 'Bonito arbol de interiores', 'productos/ficus.jpg', '2022-07-12', '2022-07-12', '1');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('6', 'macetero', 'choppaemon', '4990', '14', 'Macetero para poner plantitas', 'productos/macetero_1.jpg', '2022-07-12', '2022-07-12', '3');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('7', 'fertilizante', 'zorojuro', '19990', '14', 'Fertilizante para que las plantas crezacan bonitas y sanas', 'productos/fertilizante_1.jpg', '2022-07-12', '2022-07-12', '5');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('8', 'fertlizante', 'zorojuro', '19990', '14', 'Fertilizante para que las plantas crezacan bonitas y sanas', 'productos/fertilizante.jpg', '2022-07-12', '2022-07-12', '5');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('9', 'manguera', 'luffytaro', '19990', '14', 'Manguera 2mts de largo', 'productos/manguera.jpg', '2022-07-12', '2022-07-12', '6');
+
+INSERT INTO `app_producto` (`codigo`, `nombre`, `marca`, `precio`, `stock`, `descripcion`, `imagen`, `created_at`, `updated_at`, `tipo_id`) VALUES ('10', 'tierra de hoja', 'torao', '19990', '14', 'Tierra de hoja de calidad para tus plantitas', 'tierra_hoja_1/banano.jpg', '2022-07-12', '2022-07-12', '4');
+
