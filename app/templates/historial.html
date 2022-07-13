@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;1,100;1,300&display=swap" rel="stylesheet" href="css/estilos.css">
+    <script src="https://kit.fontawesome.com/753c9785ba.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="{% static 'static/css/style.css' %}">
+   
+    <title>Historial</title>
+</head>
+<body style="background-image: url(../static/img/background.jpg);";>
+
+<!--NAVBAR-->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href=""></a>
+        <img src="{% static 'img/icon.png' %}" alt="" width="100">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"></button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
+                {% if user.is_authenticated %}
+                <li class="nav-item" style="margin-right: 25px; margin-left: 25px;">
+                  <label for="" style="color: #ffffff;"> Bienvenido {{ user.username }}</label>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos' %}">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'historial' %}">Historial de Compras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'carrito' %}">Carrito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item"></li>
+                  <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+                </li>
+                {% endif %} 
+                
+              </ul>
+        </div>
+    </div>
+  </nav>  
+  <br>
+  
+    <header>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <h1>Historial de Pedidos</h1>
+            </div>
+          </div>
+    </header>
+
+    <div class="container overflow-hidden">
+        <div class="row justify-content-end">
+            <div class="col-2">
+                <input class="form-control" type="search " placeholder="buscar" aria-label="Search ">
+            </div>
+            <div class="col-1">
+                <button class="btn btn-outline-success" type="submit ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+          </div>        
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+              <li class="page-item disabled">
+                <a class="page-link " href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+        </nav>
+    
+
+    </div>
+
+    <!--footer-->
+    
+    <div class="footer-expand-lg footer-dark bg-dark">
+        <footer>
+            <br>
+            <label for="">© 2022 Copyright: </label>
+            <a href=""> www.PlantitasMagicas.cl</a> <br>
+            <a href="ubicacion.html" style="color: #ffffff;"> Ubicacion</a> <br>
+            <a href="contacto.html" style="color: #ffffff;">Informacion de Contacto</a>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>

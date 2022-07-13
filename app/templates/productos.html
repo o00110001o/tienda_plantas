@@ -1,0 +1,784 @@
+{% load static %}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;1,100;1,300&display=swap" rel="stylesheet" href="css/estilos.css">
+    <script src="https://kit.fontawesome.com/753c9785ba.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Productos</title>
+    
+
+</head>
+<body style="background-image: url(../static/img/background.jpg);";>
+
+    <!--nav-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href=""></a>
+            <img src="{% static 'img/icon.png' %}" alt="" width="100">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"></button>
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
+                    {% if user.is_authenticated %}
+                        <li class="nav-item" style="margin-right: 25px; margin-left: 25px;">
+                            <label for="" style="color: #ffffff;"> Bienvenido {{ user.username }}</label>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{% url 'productos' %}" role="button" aria-expanded="false">Categorias</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'productos' %}">Productos</a></li>
+                            <hr>
+                                <li><a class="dropdown-item" href="#arboles">Arboles</a></li>
+                                <li><a class="dropdown-item" href="#maceteros">Maceteros</a></li>
+                                <li><a class="dropdown-item" href="#decoraciones">Decoraciones</a></li>
+                                <li><a class="dropdown-item" href="#tierra">Tierra</a></li>
+                                <li><a class="dropdown-item" href="#fertilizantes">Fertilizantes </a></li>
+                                <li><a class="dropdown-item" href="#herramientas">Herramientas</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'historial' %}">Historial de Compras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'carrito' %}">Carrito</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item"></li>
+                        <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+                        </li>
+                    {% endif %} 
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+
+    <br>
+<!--HEADER-->
+    <div>
+        <header class="header">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <h1>Productos</h1>
+                </div>
+              </div>
+        </header>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates ipsam, molestiae optio dolores iure perspiciatis temporibus quo atque eos, laboriosam officia nulla, sint molestias at vero fugiat dolorum mollitia?Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Cum tempore modi, repellat cupiditate quas tenetur deserunt incidunt eligendi explicabo iste debitis dolore dolorum, ut officia quam sequi asperiores molestiae. Saepe!
+            </p>
+        </div>
+    </div>
+    <br>
+
+<!--CARTAS DE PRODUCTOS-->
+    <div class="container overflow-hidden">
+        <div class="row row-cols-1 row-cols-md-5 g-4">
+        
+            <div class="col" id="arboles">
+                <div class="card h-100">
+                    <img src="{% static 'img/ficus.jpg' %}" class="card-img-top" alt="..." height="200px">             <div class="card-body">
+                        <h5 class="card-title">Ficus</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="arboles">
+                <div class="card h-100">
+                    <img src="{% static 'img/murraya.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Murraya</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="arboles">
+                <div class="card h-100">
+                    <img src="{% static 'img/schefflera.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Schefflera</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="arboles">
+                <div class="card h-100">
+                    <img src="{% static 'img/suculenta.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Suculenta</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 9</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="arboles">
+                <div class="card h-100">
+                    <img src="{% static 'img/cactus.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Cactus</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 10</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="bonsai">
+                <div class="card h-100">
+                    <img src="{% static 'img/bonsai.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Bonsai</h5>
+                        <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 15</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="bonsai">
+                <div class="card h-100">
+                    <img src="{% static 'img/bonsai_1.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Bonsai</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="bonsai">
+                <div class="card h-100">
+                    <img src="{% static 'img/bonsai_2.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Bonsai</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="bonsai">
+                <div class="card h-100">
+                    <img src="{% static 'img/bonsai_pino.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Bonsai de Pino</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="bonsai">
+                <div class="card h-100">
+                    <img src="{% static 'img/bonsai_4.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Bonsai</h5>
+                        <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="maceteros">
+                <div class="card h-100">
+                    <img src="{% static 'img/macetero.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Macetero</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="maceteros">
+                <div class="card h-100">
+                    <img src="{% static 'img/macetero_1.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Macetero</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 25</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="maceteros">
+                <div class="card h-100">
+                    <img src="{% static 'img/macetero_2.jpg' %}" class="card-img-top" alt="..." height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Macetero</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 17</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="b_maceteros">
+                <div class="card h-00">
+                    <img src="{% static 'img/base_macetero.jpg' %}" class="card-img-top" alt="..." height="" width="">
+                    <div class="card-body">
+                        <h5 class="card-title">Base de Macetero Roja</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="b_maceteros">
+                <div class="card h-100">
+                    <img src="{% static 'img/base_macetero_1.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Base de Macetero Negra</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="b_maceteros">
+                <div class="card h-100">
+                    <img src="{% static 'img/base_macetero_2.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Base de Macetero Beige</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="decoracion">
+                <div class="card h-100">
+                    <img src="{% static 'img/arena_decorativa.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Arena Decorativa</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="decoracion">
+                <div class="card h-100">
+                    <img src="{% static 'img/arena_decorativa_1.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Arena Decorativa</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="decoracion">
+                <div class="card h-100">
+                    <img src="{% static 'img/arena_decorativa_2.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Arena Decorativa</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="decoracion">
+                <div class="card h-100">
+                    <img src="{% static 'img/perlitas.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Perlitas Decorativas</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="decoracion">
+                <div class="card h-100">
+                    <img src="{% static 'img/piedra_decorativa.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Piedritas Decorativas</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col" id="decoracion">
+                <div class="card h-100">
+                    <img src="{% static 'img/piedra_decorativa_1.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Piedritas Decorativas</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="tierra">
+                <div class="card h-100">
+                    <img src="{% static 'img/tierra_hoja.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Tierra de hoja</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="tierra">
+                <div class="card h-100">
+                    <img src="{% static 'img/tierra_hoja_1.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Tierra de hoja </h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="tierra">
+                <div class="card h-100">
+                    <img src="{% static 'img/tierra_hoja_2.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Tierra de hoja</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="tierra">
+                <div class="card h-100">
+                    <img src="{% static 'img/tierra_hoja_3.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Tierra Biológica Compost</h5>
+                    <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col" id="fertilizante">
+                <div class="card h-100">
+                    <img src="{% static 'img/fertilizante.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Spray Fertilizante title</h5>
+                    
+                        <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="fertilizante">
+                <div class="card h-100">
+                    <img src="{% static 'img/fertilizante_1.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Fertilizante</h5>
+                    
+                        <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="fertilizante">
+                <div class="card h-100">
+                    <img src="{% static 'img/fertilizante_3.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Fertilizante</h5>
+                        <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="herramientas_jardineria">
+                <div class="card h-100">
+                    <img src="{% static 'img/manguera.jpg' %}" class="card-img-top" alt="..." height="" width=""> 
+                    <div class="card-body">
+                        <h5 class="card-title">Manguera 30 mt</h5>
+                        <label> $20.000</label>
+                    </div>
+                    <div class="card-footer">
+    
+                        <div class="row">
+                            <div class="col justify-content-begin">
+                                <small class="text-muted">Stock: 20</small>
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <br>
+
+  <!--footer-->
+  <div class="footer-expand-lg footer-dark bg-dark">
+    <footer>
+      <br>
+      <label for="">© 2022 Copyright: </label>
+      <a href=""> www.PlantitasMagicas.cl</a> <br>
+      <a href="ubicacion.html" style="color: #ffffff;"> Ubicacion</a> <br>
+      <a href="contacto.html" style="color: #ffffff;">Informacion de Contacto</a>
+    </footer>
+  </div>
+  
+ <!--SCRIPTS-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    
+</body>
+
+</html>

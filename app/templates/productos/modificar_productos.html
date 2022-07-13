@@ -1,0 +1,59 @@
+
+{% block contenido %}
+<section class="py-4 osahan-main-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-lg-8">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table>
+                        {{ from|crispy }}
+                    </table>
+                    <input type="submit" class="btn btn-sucess mt-2" name="" id="">
+                </form>
+                {{ mensaje }}
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}
+
+
+<table class="table table-condensed table-striped">
+    <thead>  
+        <tr>
+            <th>CODIGO</th>
+            <th>NOMBRE</th>
+            <th>MARCA</th>
+            <th>PRECIO</th>
+            <th>STOCK</th>
+            <th>DESCRIPCION</th>
+            <th>TIPO</th>
+            <th>IMAGEN</th>
+            <th>FECHA INGRESO</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+     {% for aux in listaProductos %}
+         <tr>
+             <td>{{ aux.plu_codigo }}</td>
+             <td>{{ aux.nombre }}</td>
+             <td>{{ aux.marca }}</td>
+             <td>{{ aux.precio }}</td>
+             <td>{{ aux.stock }}</td>
+             <td>{{ aux.descripcion }}</td>
+             <td>{{ aux.tipo }}</td>
+             <td>{{ aux.imagen }}</td>
+             <td>{{ aux.fecha_ingreso }}</td>
+             <td>
+                 <a href="{% url 'modificar' aux.id %}" class="btn btn-info">Modificar</a>
+                 <a href="{% url 'eliminarproducto' aux.id %}" class="btn btn-danger">Eliminar</a>
+             </td>
+         </tr>
+     {% endfor %}
+    </tbody>
+</table>
