@@ -22,6 +22,7 @@
   <title>Listar Productos</title>
 
 <body>
+    {% load humanize %}
     <table class="table table-condensed table-striped">
         <thead>  
             <tr>
@@ -37,13 +38,14 @@
                 <th>OPCIONES</th>
             </tr>
         </thead>
+
         <tbody>
         {% for aux in listaProductos %}
             <tr>
                 <td>{{ aux.plu_codigo }}</td>
                 <td>{{ aux.nombre }}</td>
                 <td>{{ aux.marca }}</td>
-                <td>{{ aux.precio }}</td>
+                <td>{{ aux.precio | intcomma }}</td>
                 <td>{{ aux.stock }}</td>
                 <td>{{ aux.descripcion }}</td>
                 <td>{{ aux.tipo }}</td>
@@ -52,7 +54,7 @@
                 <td>{{ aux.created_at }}</td>
                 <td>{{ aux.updated_at }}</td>
                 <td>
-                    <a href="{% url 'modificar' aux.codigo %}" class="btn btn-info">Modificar</a>
+                    <a href="{% url 'modificar_producto' aux.codigo %}" class="btn btn-info">Modificar</a>
                     <a href="{% url 'eliminarproducto' aux.codigo %}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
