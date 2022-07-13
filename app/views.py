@@ -1,3 +1,4 @@
+from ast import Return
 import requests #NOS PERMITE LEER EL API
 from django.shortcuts import render, redirect
 from django.forms import *
@@ -43,10 +44,12 @@ def registro(request):
 
 @login_required
 def productos(request):
-    #response = requests.get('https://rickandmortyapi.com/productos').json()
+    response = requests.get("http://127.0.0.1:8000/api/producto/").json()
     productosAll = Producto.objects.all()
-    datos = {'listaProductos' : productosAll }
-        #'listaJson': response
+    datos = {'listaProductos' : productosAll,
+    'listaJson': response
+    }
+
        
     if request.method == 'POST':
         carrito = Items_Carrito()
@@ -61,24 +64,23 @@ def carrito(request):
     return render(request, 'carrito.html')
     
 def test(request):
-    data= {
-        'form':ProductoForm()
-    }
-
-    return render(request, 'test.html', data)
+    return render(request, 'test.html')
 
 def historial(request):
     return render(request, 'historial.html')
 
+#-----------------------------------------------------------------------------------------------------------
+#CRUD PRODUCTOS
+
 #SECCION LISTAR
 @permission_required
 def listar_productos(request):
-    productosAll = Producto.objects.all()
-    datos = {
-        'listaProductos' : productosAll
+    productos = Producto.objects.all()
+    data = {
+        'listaProductos' : productos
     }
     
-    return render(request, 'templates/productos/listar_productos.html', datos)
+    return render(request, '../productos/listar_productos.html', data)
 
 #SECCION AGREGAR
 @permission_required
@@ -90,10 +92,10 @@ def agregar_producto(request):
         formulario = ProductoForm(request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            data['mensaje'] = 'app/agregar_producto.html'
+            data['mensaje'] = 'agregar_producto.html'
             
 
-    return render(request, 'agregar_producto.html',data)
+    return render(request, '../productos/agregar_producto.html',data)
 
 #SECCION MODIFICAR
 @permission_required
@@ -109,7 +111,7 @@ def modificar_producto(request, id):
             datos['mensaje'] = 'Producto modificado correctamente!'
             datos['form'] = formulario
 
-    return render(request, 'app/productos/modificar_producto.html', datos)
+    return render(request, '../productos/modificar_producto.html', datos)
 
 # SECCION ELIMINAR
 @permission_required

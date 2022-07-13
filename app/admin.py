@@ -22,7 +22,12 @@ class Usuario(admin.ModelAdmin):
     readonly_fields = ['created_at', 'updated_at']
     list_per_page = []
 
+class Items_Carrito(admin.ModelAdmin):
+    list_display = ['nombre','precio','imagen']
+    search_fields = ['nombre']
+    list_per_page =[]
+
 admin.site.register(Producto, ProductosAdmin)
-#admin.site.register(Usuario,UserAdmin)
+
 admin.site.register(TipoProducto)
 #admin.site.register(Usuario, UserList)

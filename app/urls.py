@@ -23,4 +23,5 @@ urlpatterns = [
     path('agregar/', agregar_producto, name="agregar_productos"),
     path('modificar/', modificar_producto, name="modificar_productos"),
     path('listar/', listar_productos, name="listar_productos"),
+
 ]
